@@ -29,7 +29,7 @@ public class TripService {
     }
 
     public void delete(Long id) {
-        tripRepository.delete(id);
+        tripRepository.deleteById(id);
     }
 
     public void update(TripDto newTrip) {
