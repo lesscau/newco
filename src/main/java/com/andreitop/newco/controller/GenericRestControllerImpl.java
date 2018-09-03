@@ -18,9 +18,6 @@ public abstract class GenericRestControllerImpl<E extends IDto, K> implements IG
         this.service = service;
     }
 
-    public GenericRestControllerImpl() {
-    }
-
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

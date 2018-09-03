@@ -14,7 +14,4 @@ public class TripService extends GenericServiceImpl<TripDto, Long> {
         super(repository);
 
     }
-
-    public TripService() {
-    }
 }

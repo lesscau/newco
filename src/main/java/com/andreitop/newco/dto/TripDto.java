@@ -9,6 +9,16 @@ public class TripDto implements IDto {
     private String destination;
     private Integer price;
 
+    public TripDto() {
+    }
+
+    public TripDto(Long id, String origin, String destination, Integer price) {
+        this.id = id;
+        this.origin = origin;
+        this.destination = destination;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
