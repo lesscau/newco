@@ -1,6 +1,7 @@
-package com.andreitop.newco.controller;
+package com.andreitop.newco;
 
 import com.andreitop.newco.common.ApiConstant;
+import com.andreitop.newco.controller.TripsController;
 import com.andreitop.newco.dto.TripDto;
 import com.andreitop.newco.service.TripService;
 import org.junit.Before;
