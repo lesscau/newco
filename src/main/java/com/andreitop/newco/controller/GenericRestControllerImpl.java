@@ -4,6 +4,7 @@ import com.andreitop.newco.dto.IDto;
 import com.andreitop.newco.service.IGenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,36 +21,38 @@ public abstract class GenericRestControllerImpl<E extends IDto, K> implements IG
 
     @Override
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody E entity) {
+    public ResponseEntity<Void> create(@RequestBody E entity) {
         service.save(entity);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Override
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody E entity) {
+    public ResponseEntity<Void> update(@RequestBody E entity) {
         service.update(entity);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable("id") K id) {
+    public ResponseEntity<Void> deleteById(@PathVariable("id") K id) {
         service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @Override
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public E findById(@PathVariable("id") K id) {
-        return service.findById(id);
+    public ResponseEntity<E> findById(@PathVariable("id") K id) {
+        return ResponseEntity.ok().body(service.findById(id));
     }
 
     @Override
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<E> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<E>> findAll() {
+        return ResponseEntity.ok().body(service.findAll());
     }
 }
