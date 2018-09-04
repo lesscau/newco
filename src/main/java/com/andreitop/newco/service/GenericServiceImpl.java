@@ -17,9 +17,6 @@ public abstract class GenericServiceImpl<E extends IDto, K> implements IGenericS
         this.repository = repository;
     }
 
-    public GenericServiceImpl() {
-    }
-
     @Override
     public void save(E entity) {
         repository.save(entity);

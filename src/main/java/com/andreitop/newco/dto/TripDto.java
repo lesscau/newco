@@ -6,16 +6,14 @@ public class TripDto implements IDto {
 
     private static final long serialVersionUID = 5914366185889783660L;
 
-    @NotNull
-    @PositiveOrZero
     private Long id;
 
     @NotEmpty
-    @Pattern(regexp = "/^[A-Z]{3}$/", message = "airport code should be right format")
+    @Pattern(regexp = "^[A-Z]{3}$", message = "airport code should be right format")
     private String origin;
 
     @NotEmpty
-    @Pattern(regexp = "/^[A-Z]{3}$/", message = "airport code should be right format")
+    @Pattern(regexp = "^[A-Z]{3}$", message = "airport code should be right format")
     private String destination;
 
     @NotNull
