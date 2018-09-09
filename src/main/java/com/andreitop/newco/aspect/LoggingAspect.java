@@ -34,7 +34,7 @@ public class LoggingAspect {
     public Object aroundService(ProceedingJoinPoint pjp) throws Throwable {
         String className = pjp.getSignature().getDeclaringTypeName();
         String methodName = pjp.getSignature().getName();
-        logger.info(" ---> Method " + className + "." + methodName + " was called right now");
+        logger.info(" ---> Method " + className + "." + methodName + " is about to be called");
         Object retVal = pjp.proceed();
         logger.info(" ---> Method " + className + "." + methodName + " was called right now");
         return retVal;
