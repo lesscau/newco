@@ -34,20 +34,12 @@ public class AspectTest {
     }
 
     @Test
-    public void whenCalledFindInRepo_thenLogging() {
-        tripsController.findAll();
-        assert (outContent.toString().matches("[\\s\\S]*TripRepository.findAll[\\s\\S]*is about to be called[\\s\\S]*"));
-        assert (outContent.toString().matches("[\\s\\S]*TripRepository.findAll[\\s\\S]*was called right now[\\s\\S]*"));
-    }
-
-    @Test
     public void whenDeletedMethodCalled_thenLogging() {
         tripsController.create(new TripDto());
         tripsController.delete(1L);
         assert (outContent.toString().matches("[\\s\\S]*TripsController.delete[\\s\\S]*was called right now[\\s\\S]*"));
         assert (outContent.toString().matches("[\\s\\S]*TripService.delete[\\s\\S]*was called right now[\\s\\S]*"));
-        assert (outContent.toString().matches("[\\s\\S]*TripRepository.delete[\\s\\S]*was called right now[\\s\\S]*"));
-    }
+        }
 
     @Test
     public void whenSentPostRequest_thenLogging() throws Exception {
