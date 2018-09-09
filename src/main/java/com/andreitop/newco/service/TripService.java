@@ -4,9 +4,11 @@ import com.andreitop.newco.dto.TripDto;
 import com.andreitop.newco.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Service
@@ -20,10 +22,12 @@ public class TripService {
         this.tripRepository = tripRepository;
     }
 
+    @Transactional( propagation = Propagation.SUPPORTS,readOnly = true, isolation = Isolation.SERIALIZABLE)
     public List<TripDto> findAll() {
         return tripRepository.findAll();
     }
 
+    @Transactional( propagation = Propagation.SUPPORTS,readOnly = true, isolation = Isolation.SERIALIZABLE)
     public TripDto findById(Long id) {
         return tripRepository.findById(id).orElse(null);
     }
